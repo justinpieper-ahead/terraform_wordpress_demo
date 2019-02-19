@@ -1,0 +1,7 @@
+.terraform/
+.vscode/
+.DS_Store
+*.tfstate*
+*.php*
+*.conf
+*.txt

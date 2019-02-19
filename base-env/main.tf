@@ -32,8 +32,6 @@ module "jumpbox" {
   public_subnets = "${module.vpc.public_subnets}"
 
   vpc_id = "${module.vpc.vpc_id}"
-
-
 }
 
 resource "aws_kms_key" "base_key" {
@@ -42,6 +40,6 @@ resource "aws_kms_key" "base_key" {
 }
 
 resource "aws_key_pair" "mac_ssh" {
-  key_name = "mac_ssh"
+  key_name   = "mac_ssh"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrD8Tuqccb9YrDUCc/ouJvqsKLo7+VRPzGolg28uTwq7fBikfZ9uqHfML5k0Tgp8rBgb/AIwGkuwFJrntiV0mIoCs2BSzhb9e1i8Fa0ZnG0RCXV6+aUboqSeBwpWlDAnZnBK1KQqKoQsv7I9DjYQW2uMyogUQl8EtHco6z/sSmYcGBw6/EWRXz26oGw72CgEVH96X+QDDO+xCQO12MP12IjMISSos1Ab9YzWyvOmcbKg2UHCXUhI25v2KURjVlXQuPTuYXYcCl4wH8ONAld/Dvuk0cK4pnbm+HcEhm8QJmxb65tHNoCK+tB/BVeDOBBdaX0rrq9M3LB17RwEQJVvGJj+rTQWQOanzwM1VglrliRRjc9Tgy4emTJD0h5kMqbstPOAkvdNrkFwTtqjMT3Vm4iAga2Bhteary9FgT2Mo5DYJfqp5cdwI/t2sn+V/7Ca8hIbfistu9TRByw35ZBC4uHXnRztsMhDVkzFR2J+dsuHPKN7buTs8zWEZwQSDCTAEeses9+DdJbv/hXeOvHLVdu/CxIMGqDN8tfUTiw4AbAHppnqzW0Do+hVS2Gp/U+y+GZ0jZ7712U3YBiZtVk4XcWa/zERe4deiiePpvPOK4oFRRGQnm5rFHxBFYW+5HkbP5+h4pbBGNN94vbJw6l56wP940Z8hxiudYn3falyGFuQ== justin.pieper@AHD-MBP13-053.local"
 }

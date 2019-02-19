@@ -12,19 +12,7 @@ data "template_file" "userdata" {
   template = "${file("scripts/install.sh")}"
 }
 
-data "aws_ami" "wordpress_ami" {
-  most_recent = true
-
-  filter = {
-    name   = "owner-id"
-    values = ["137112412989"] // Amazon
-  }
-
-  filter = {
-    name   = "name"
-    values = ["amzn-ami-hvm-*"]
-  }
-}
+data "aws_region" "current" {}
 
 data "aws_route53_zone" "showturtles" {
   name = "showturtles.com"

@@ -1,8 +1,8 @@
 resource "aws_instance" "jumpbox" {
-  ami                    = "${lookup(var.amis, data.aws_region.current.name)}"
-  instance_type          = "t2.micro"
-  key_name               = "${var.key_name}"
-  subnet_id              = "${var.public_subnets[0]}"
+  ami = "${lookup(var.amis, data.aws_region.current.name)}"
+  instance_type = "t2.micro"
+  key_name = "${var.key_name}"
+  subnet_id = "${var.public_subnets[0]}"
   vpc_security_group_ids = ["${aws_security_group.ssh_access.id}"]
 
   tags = "${merge(local.common_tags,map(
@@ -10,6 +10,7 @@ resource "aws_instance" "jumpbox" {
     )
   )}"
 }
+
 
 resource "aws_security_group" "ssh_access" {
   name        = "jumpbox_ssh"

@@ -4,6 +4,7 @@ module "vpc" {
   name = "my-vpc"
   cidr = "10.0.0.0/16"
 
+  # TODO change this to dynamically grab the first 3 AZs
   azs             = ["us-east-1a", "us-east-1b", "us-east-1c"]
   private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
@@ -40,6 +41,6 @@ resource "aws_kms_key" "base_key" {
 }
 
 resource "aws_key_pair" "mac_ssh" {
-  key_name   = "mac_ssh"
+  key_name = "mac_ssh"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrD8Tuqccb9YrDUCc/ouJvqsKLo7+VRPzGolg28uTwq7fBikfZ9uqHfML5k0Tgp8rBgb/AIwGkuwFJrntiV0mIoCs2BSzhb9e1i8Fa0ZnG0RCXV6+aUboqSeBwpWlDAnZnBK1KQqKoQsv7I9DjYQW2uMyogUQl8EtHco6z/sSmYcGBw6/EWRXz26oGw72CgEVH96X+QDDO+xCQO12MP12IjMISSos1Ab9YzWyvOmcbKg2UHCXUhI25v2KURjVlXQuPTuYXYcCl4wH8ONAld/Dvuk0cK4pnbm+HcEhm8QJmxb65tHNoCK+tB/BVeDOBBdaX0rrq9M3LB17RwEQJVvGJj+rTQWQOanzwM1VglrliRRjc9Tgy4emTJD0h5kMqbstPOAkvdNrkFwTtqjMT3Vm4iAga2Bhteary9FgT2Mo5DYJfqp5cdwI/t2sn+V/7Ca8hIbfistu9TRByw35ZBC4uHXnRztsMhDVkzFR2J+dsuHPKN7buTs8zWEZwQSDCTAEeses9+DdJbv/hXeOvHLVdu/CxIMGqDN8tfUTiw4AbAHppnqzW0Do+hVS2Gp/U+y+GZ0jZ7712U3YBiZtVk4XcWa/zERe4deiiePpvPOK4oFRRGQnm5rFHxBFYW+5HkbP5+h4pbBGNN94vbJw6l56wP940Z8hxiudYn3falyGFuQ== justin.pieper@AHD-MBP13-053.local"
 }

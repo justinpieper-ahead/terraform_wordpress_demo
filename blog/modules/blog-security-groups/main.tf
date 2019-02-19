@@ -30,9 +30,9 @@ resource "aws_security_group_rule" "https_access" {
 }
 
 resource "aws_security_group" "allow_alb_http" {
-  name        = "allow_alb_http"
+  name = "allow_alb_http"
   description = "Allow http and https between alb and asg"
-  vpc_id      = "${var.vpc_id}"
+  vpc_id = "${var.vpc_id}"
 
   tags = "${merge(local.common_tags,map(
      "Name", "allow_alb_http"
@@ -41,21 +41,21 @@ resource "aws_security_group" "allow_alb_http" {
 }
 
 resource "aws_security_group_rule" "allow_alb_http_rule" {
-  type      = "ingress"
+  type = "ingress"
   from_port = 80
-  to_port   = 80
-  protocol  = "tcp"
-  self      = true
+  to_port = 80
+  protocol = "tcp"
+  self = true
 
   security_group_id = "${aws_security_group.allow_alb_http.id}"
 }
 
 resource "aws_security_group_rule" "allow_alb_https_rule" {
-  type      = "ingress"
+  type = "ingress"
   from_port = 443
-  to_port   = 443
-  protocol  = "tcp"
-  self      = true
+  to_port = 443
+  protocol = "tcp"
+  self = true
 
   security_group_id = "${aws_security_group.allow_alb_http.id}"
 }
@@ -72,12 +72,10 @@ resource "aws_security_group" "ssh_access" {
 }
 
 resource "aws_security_group_rule" "ssh_access_rule" {
-  type      = "ingress"
-  from_port = 22
-  to_port   = 22
-  protocol  = "tcp"
-
-  #cidr_blocks = ["${data.external.get_ip.result.ip}/32"]
+  type        = "ingress"
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
   cidr_blocks = ["${data.terraform_remote_state.base_env.jumpbox_ip}/32"]
 
   security_group_id = "${aws_security_group.ssh_access.id}"

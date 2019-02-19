@@ -129,7 +129,7 @@ resource "aws_autoscaling_group" "blog_asg" {
 resource "aws_launch_template" "blog_launch_template" {
   // Need the efs_mount up before we stand up any instances
   depends_on             = ["aws_efs_mount_target.efs_mounts", "aws_route53_record.efs_record"]
-  ami                    = "${lookup(var.amis, data.aws_region.current.name)}"
+  image_id               = "${lookup(var.ami_ids, data.aws_region.current.name)}"
   instance_type          = "t2.micro"
   key_name               = "${data.terraform_remote_state.base_env.key_name}"
   vpc_security_group_ids = ["${module.web_sg.allow_alb_sg_id}", "${module.rds_sg.rds_sg_id}", "${module.web_sg.ssh_sg_id}", "${module.web_sg.efs_sg_id}"]
